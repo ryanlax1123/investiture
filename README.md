@@ -4,11 +4,19 @@ A learning scaffold for designers who want to use Claude Code to build real appl
 
 ---
 
-## What is this?
+## What This Is
 
-Investiture is engineering knowledge pre-loaded into a scaffold your AI can read. Work inside a system with guardrails built in. You don't have to become an engineer — just build inside structure that already knows the rules.
+Investiture is an architecture scaffold — folders, separation of concerns, and a CLAUDE.md that teaches your AI assistant how to write clean code. It's a spaghetti-free zone for vibe coding. Clone it, open it in Claude Code, and start building. The structure keeps you from painting yourself into corners.
 
 The name comes from Brandon Sanderson's Cosmere: Investiture is the underlying magical energy that manifests differently on each world. Same power source, different expressions.
+
+---
+
+## What This Is Not
+
+This is not Tailwind. This is not Bootstrap. Investiture gives you **zero styles, zero layouts, zero components**. Run it and you get a blank screen. That's the point.
+
+It's unopinionated about your UI — it only cares about where your code lives. Bring your own design system, or ask Claude to build one.
 
 ---
 
