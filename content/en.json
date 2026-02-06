@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "My App",
-    "tagline": "Built with Investiture"
+    "title": "Pomodoro Timer",
+    "tagline": "Stay focused, take breaks"
   },
   "nav": {
     "home": "Home",
@@ -12,7 +12,23 @@
     "submit": "Submit",
     "cancel": "Cancel",
     "save": "Save",
-    "delete": "Delete"
+    "delete": "Delete",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset"
+  },
+  "themes": {
+    "default": "Default",
+    "win95": "Windows 95",
+    "spotify": "Spotify",
+    "airbnb": "Airbnb",
+    "uber": "Uber",
+    "facebook": "Facebook"
+  },
+  "timer": {
+    "work": "Focus",
+    "break": "Break",
+    "sessions": "Sessions completed"
   },
   "messages": {
     "loading": "Loading...",

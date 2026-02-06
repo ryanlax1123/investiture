@@ -55,3 +55,25 @@ export function debounce(fn, delay = 300) {
     timeoutId = setTimeout(() => fn(...args), delay);
   };
 }
+
+/**
+ * Format seconds into MM:SS display
+ * @param {number} totalSeconds
+ * @returns {string} Formatted time string
+ */
+export function formatTime(totalSeconds) {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+/**
+ * Calculate progress percentage (0 to 1)
+ * @param {number} remaining - Seconds remaining
+ * @param {number} total - Total seconds
+ * @returns {number} Progress from 0 to 1
+ */
+export function calcProgress(remaining, total) {
+  if (total === 0) return 0;
+  return 1 - remaining / total;
+}

@@ -11,26 +11,173 @@ body {
   background: var(--color-background);
   color: var(--color-text-primary);
   line-height: 1.5;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative;
+  text-align: center;
   padding: var(--space-xl);
+}
+
+/* Theme switcher */
+.theme-switcher {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+.theme-select {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.theme-select:hover,
+.theme-select:focus {
+  border-color: var(--color-accent);
+  outline: none;
 }
 
 h1 {
   font-size: var(--font-size-xxl);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xs);
 }
 
-p {
+.tagline {
   color: var(--color-text-secondary);
   font-size: var(--font-size-lg);
+  margin-bottom: var(--space-xl);
+}
+
+/* Timer card */
+.timer-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* Mode badge */
+.mode-badge {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mode-badge.work {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.mode-badge.break {
+  background: #22c55e;
+  color: #fff;
+}
+
+/* Timer ring */
+.timer-ring {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.timer-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 8;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.mode-badge.break ~ .timer-ring .ring-progress,
+.timer-card:has(.mode-badge.break) .ring-progress {
+  stroke: #22c55e;
+}
+
+.timer-display {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.btn {
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn.primary {
+  background: var(--color-accent);
+  color: #fff;
+  min-width: 100px;
+}
+
+.btn.primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn.secondary {
+  background: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.btn.secondary:hover {
+  background: var(--color-text-secondary);
+  color: #fff;
+}
+
+/* Session count */
+.session-count {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
 }
