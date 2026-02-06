@@ -1,0 +1,36 @@
+@import '../design-system/tokens.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--space-md);
+}
+
+p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}

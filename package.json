@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --config demo/vite.config.js",
-    "dev": "npx @11ty/eleventy --serve",
-    "build": "ELEVENTY_ENV=production npx @11ty/eleventy && npm run build:demo",
-    "build:demo": "vite build --config demo/vite.config.js",
-    "dev:demo": "vite --config demo/vite.config.js",
-    "preview": "npx @11ty/eleventy --serve"
+    "start": "vite",
+    "build": "vite build",
+    "examples": "vite --config examples/vite.config.js",
+    "build:examples": "vite build --config examples/vite.config.js",
+    "docs": "ELEVENTY_ENV=production npx @11ty/eleventy",
+    "docs:dev": "npx @11ty/eleventy --serve",
+    "build:all": "npm run docs && npm run build:examples"
   },
   "dependencies": {
     "react": "^19.0.0",

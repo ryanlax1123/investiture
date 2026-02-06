@@ -38,62 +38,72 @@ if [ ! -f CLAUDE.md ]; then
   cat > CLAUDE.md << 'CLAUDEMD'
 # My App
 
-This is a React application built with Vite.
-
----
-
-## What is this file?
-
-CLAUDE.md is read by Claude Code when it opens your project. It tells Claude
-about your codebase so it can help you build. Think of it as a briefing doc
-for your AI assistant.
-
-You can customize this file however you want. Add rules, describe your
-architecture, or define a persona for Claude to adopt.
+A React application with clean architecture.
 
 ---
 
 ## Project Structure
 
 ```
-demo/App.jsx    — Your main React component. This is where your UI lives.
-demo/App.css    — Your styles. Uses CSS variables for theming.
-demo/main.jsx   — React mount point. You probably don't need to touch this.
-demo/index.html — HTML shell. You probably don't need to touch this.
-package.json    — Dependencies and scripts.
+src/              — YOUR APP (start here)
+  App.jsx         — Your main component
+  App.css         — Your styles
+
+design-system/    — Visual foundation
+  tokens.css      — Colors, spacing, typography as CSS variables
+
+content/          — User-facing strings
+  en.json         — All text in one place
+
+core/             — Pure business logic
+  utils.js        — Helper functions (no side effects)
+
+services/         — External integrations
+  api.js          — API client (swap for your backend)
+
+examples/         — Reference implementations
+  App.jsx         — Counter, theme toggle, animations
 ```
 
 ---
 
-## How to run
+## Architecture Rules
+
+When adding features, follow this pattern:
+
+1. **UI goes in src/** — Components, styles, layouts
+2. **Strings go in content/** — No hardcoded text in components
+3. **Styles use tokens** — Always use CSS variables from design-system/
+4. **Logic goes in core/** — Pure functions, no API calls
+5. **API calls go in services/** — All external data through services/
+
+---
+
+## Do Not
+
+- Put API calls in components — use services/
+- Hardcode colors — use design-system/tokens.css
+- Inline user-facing strings — use content/en.json
+- Mix business logic with UI — keep core/ pure
+
+---
+
+## How to Run
 
 ```
-npm start       — Start the dev server (opens in browser)
+npm start        — Run your app (localhost:3000)
+npm run examples — See the demo app (localhost:3001)
 ```
 
 ---
 
-## Persona (optional)
+## Starter Prompts
 
-You can give Claude a personality. Uncomment and customize:
+Try these in Claude Code:
 
-<!--
-You are a helpful coding assistant who explains what you're doing
-as you work. Keep code simple and well-commented. When I ask for
-a feature, implement the simplest version first.
--->
-
----
-
-## Rules (optional)
-
-Add rules here as you learn what works:
-
-<!-- Examples:
-- Always use CSS variables for colors, never hardcoded values
-- Keep components under 100 lines
-- Add comments explaining non-obvious code
--->
+1. "Add a todo list that saves to localStorage"
+2. "Add a dark mode toggle using the design tokens"
+3. "Fetch data from an API and display it"
 CLAUDEMD
   echo "  Created CLAUDE.md — this is your AI assistant's guide to your project"
 fi
@@ -102,12 +112,20 @@ fi
 echo ""
 echo "  Setup complete!"
 echo ""
-echo "  Your app is in the demo/ folder:"
-echo "    demo/App.jsx  — your React component"
-echo "    demo/App.css  — your styles"
+echo "  Your app is in the src/ folder:"
+echo "    src/App.jsx         — your React component"
+echo "    src/App.css         — your styles"
+echo ""
+echo "  Architecture folders:"
+echo "    design-system/      — CSS variables and tokens"
+echo "    content/            — user-facing strings"
+echo "    core/               — pure business logic"
+echo "    services/           — API and external integrations"
 echo ""
 echo "  Next steps:"
 echo "    1. Run:  npm start"
 echo "    2. Open Claude Code in this folder"
-echo "    3. Try:  \"Add a color picker that changes the background\""
+echo "    3. Try:  \"Add a todo list that saves to localStorage\""
+echo ""
+echo "  Run 'npm run examples' to see interactive demos."
 echo ""

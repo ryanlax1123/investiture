@@ -19,7 +19,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget("*.scss");
 
   // Ignore files that shouldn't be processed as pages
-  eleventyConfig.ignores.add("demo/**");
+  eleventyConfig.ignores.add("src/**");
+  eleventyConfig.ignores.add("examples/**");
+  eleventyConfig.ignores.add("design-system/**");
+  eleventyConfig.ignores.add("content/**");
+  eleventyConfig.ignores.add("core/**");
+  eleventyConfig.ignores.add("services/**");
   eleventyConfig.ignores.add("CLAUDE.md");
   eleventyConfig.ignores.add("README.md");
 

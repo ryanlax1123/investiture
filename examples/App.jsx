@@ -11,13 +11,13 @@ function App() {
         {/* Hero */}
         <header className="hero">
           <h1 className="title">
-            <span className="title-line">Build with</span>
-            <span className="title-accent">Investiture</span>
+            <span className="title-line">Investiture</span>
+            <span className="title-accent">Examples</span>
           </h1>
           <p className="subtitle">
-            A minimal React scaffold for AI-assisted development.
+            Interactive demos showing React patterns.
             <br />
-            Clean code. Clear structure. Ready for Claude.
+            Run <code>npm run examples</code> to see this page.
           </p>
         </header>
 
