@@ -28,7 +28,9 @@
   "timer": {
     "work": "Focus",
     "break": "Break",
-    "sessions": "Sessions completed"
+    "sessions": "Sessions completed",
+    "takeBreak": "Take a Break",
+    "breakMinutes": "{min} min"
   },
   "messages": {
     "loading": "Loading...",

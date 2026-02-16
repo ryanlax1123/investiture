@@ -176,6 +176,37 @@ h1 {
   color: #fff;
 }
 
+/* Break button */
+.btn.break-btn {
+  background: #22c55e;
+  color: #fff;
+}
+
+.btn.break-btn:hover {
+  background: #16a34a;
+}
+
+/* Break options */
+.break-options {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn.break-option {
+  background: var(--color-surface);
+  color: #22c55e;
+  border: 2px solid #22c55e;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.btn.break-option:hover {
+  background: #22c55e;
+  color: #fff;
+}
+
 /* Session count */
 .session-count {
   color: var(--color-text-secondary);

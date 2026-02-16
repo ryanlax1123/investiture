@@ -4,7 +4,7 @@ import strings from '../content/en.json';
 import './App.css';
 
 const WORK_SECONDS = 25 * 60;
-const BREAK_SECONDS = 5 * 60;
+const BREAK_OPTIONS = [3, 5, 10, 15];
 
 const THEMES = ['default', 'win95', 'spotify', 'airbnb', 'uber', 'facebook'];
 
@@ -14,6 +14,7 @@ function App() {
   const [isBreak, setIsBreak] = useState(false);
   const [sessions, setSessions] = useState(0);
   const [theme, setTheme] = useState('default');
+  const [showBreakOptions, setShowBreakOptions] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -24,7 +25,8 @@ function App() {
     }
   }, [theme]);
 
-  const totalSeconds = isBreak ? BREAK_SECONDS : WORK_SECONDS;
+  const [breakSeconds, setBreakSeconds] = useState(5 * 60);
+  const totalSeconds = isBreak ? breakSeconds : WORK_SECONDS;
   const progress = calcProgress(secondsLeft, totalSeconds);
 
   useEffect(() => {
@@ -36,14 +38,14 @@ function App() {
             setIsRunning(false);
             if (!isBreak) setSessions((s) => s + 1);
             setIsBreak((b) => !b);
-            return isBreak ? WORK_SECONDS : BREAK_SECONDS;
+            return isBreak ? WORK_SECONDS : breakSeconds;
           }
           return prev - 1;
         });
       }, 1000);
     }
     return () => clearInterval(intervalRef.current);
-  }, [isRunning, isBreak]);
+  }, [isRunning, isBreak, breakSeconds]);
 
   function handleStartPause() {
     setIsRunning((r) => !r);
@@ -53,7 +55,18 @@ function App() {
     clearInterval(intervalRef.current);
     setIsRunning(false);
     setIsBreak(false);
+    setShowBreakOptions(false);
     setSecondsLeft(WORK_SECONDS);
+  }
+
+  function handleTakeBreak(minutes) {
+    clearInterval(intervalRef.current);
+    const secs = minutes * 60;
+    setBreakSeconds(secs);
+    setIsBreak(true);
+    setSecondsLeft(secs);
+    setIsRunning(true);
+    setShowBreakOptions(false);
   }
 
   const modeLabel = isBreak ? strings.timer.break : strings.timer.work;
@@ -103,7 +116,29 @@ function App() {
             <button className="btn secondary" onClick={handleReset}>
               {strings.actions.reset}
             </button>
+            {!isBreak && (
+              <button
+                className="btn break-btn"
+                onClick={() => setShowBreakOptions((s) => !s)}
+              >
+                {strings.timer.takeBreak}
+              </button>
+            )}
           </div>
+
+          {showBreakOptions && !isBreak && (
+            <div className="break-options">
+              {BREAK_OPTIONS.map((min) => (
+                <button
+                  key={min}
+                  className="btn break-option"
+                  onClick={() => handleTakeBreak(min)}
+                >
+                  {strings.timer.breakMinutes.replace('{min}', min)}
+                </button>
+              ))}
+            </div>
+          )}
 
           <p className="session-count">
             {strings.timer.sessions}: {sessions}
